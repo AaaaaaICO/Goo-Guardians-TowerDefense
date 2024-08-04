@@ -10,11 +10,14 @@ config_version=5
 
 [application]
 
-config/name="TowerDefense"
+config/name="Goo Guardians"
+config/description="Goo-Guardians by AaaaaaICO
+Github ----> https://github.com/AaaaaaICO"
+config/version="0.0.1.0"
 run/main_scene="res://Scenes/Menus/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://Other/ICON.png"
-config/icon="res://Other/icon.svg"
+config/icon="res://Other/ICON.png"
 
 [audio]
 
