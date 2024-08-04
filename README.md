@@ -40,8 +40,8 @@ Please report any bugs/issues on the github page
 
 
 #### Images
-Enemy Spawner Concent design
-![alt text](https://github.com/AaaaaaICO/Goo-Guardians-TowerDefenseGame-/blob/main/Other/Extras/Enemy%20Wave%20Spawner.PNG "'Flowchart' of enemy spawner")
-
 Gameplay
-![alt text](https://github.com/AaaaaaICO/Goo-Guardians-TowerDefenseGame-/blob/main/Other/Extras/GamePlay.PNG "Gameplay")
+![alt text](https://github.com/AaaaaaICO/Goo-Guardians-TowerDefense/blob/main/Other/Extras/GamePlay.PNG "Gameplay")
+
+Enemy Spawner Concent design
+![alt text](https://github.com/AaaaaaICO/Goo-Guardians-TowerDefense/blob/main/Other/Extras/Enemy%20Wave%20Spawner.PNG "'Flowchart' of enemy spawner")
