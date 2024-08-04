@@ -1,0 +1,161 @@
+[gd_scene load_steps=13 format=3 uid="uid://dgs52da738co7"]
+
+[ext_resource type="Script" path="res://Scripts/Turrets/Turret.gd" id="1_ywu46"]
+[ext_resource type="Texture2D" uid="uid://b0nrugftn5bgr" path="res://Sprites/Turrets/Shotgun/Shotgun_BUL.png" id="2_fwjai"]
+[ext_resource type="PackedScene" uid="uid://ctlvguwsabiq1" path="res://Scenes/Turrets/Shotgun_Bullet.tscn" id="3_yw66a"]
+[ext_resource type="Texture2D" uid="uid://boy60l3ahrrp" path="res://Sprites/Assets/Radius.png" id="4_wrhv7"]
+[ext_resource type="Texture2D" uid="uid://b8iueaitdmnqb" path="res://Sprites/Turrets/Shotgun/Shotgun.png" id="5_x4v66"]
+[ext_resource type="Texture2D" uid="uid://raa8xpqphrpi" path="res://Sprites/Turrets/Shotgun/Shotgun_ROT.png" id="6_mpwcg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2m5c"]
+radius = 25.0
+
+[sub_resource type="Animation" id="Animation_gxrmg"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("__SCALABLE__:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pn17a"]
+resource_name = "on_hover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("__SCALABLE__:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(0.217638, 0.329877, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_813a1"]
+resource_name = "on_hover_release"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("__SCALABLE__:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(0.217638, 0.450626, 0.517632),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_itjko"]
+resource_name = "on_upgrade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("__NULL__/__BASE__:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.241484, 1, 2.21914, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("__NULL__/__ROT__:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.241484, 1, 2.21914, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5crn"]
+_data = {
+"RESET": SubResource("Animation_gxrmg"),
+"on_hover": SubResource("Animation_pn17a"),
+"on_hover_release": SubResource("Animation_813a1"),
+"on_upgrade": SubResource("Animation_itjko")
+}
+
+[node name="Turret" type="Node2D" groups=["TURRET"]]
+script = ExtResource("1_ywu46")
+DefRangeScale = 0.18
+Index = 1
+TurretName = "Shotgun"
+FireRate = 1.0
+FireRateIncrease = 0.08
+NumOfProj = 8
+Damage = 10
+DamageIncrease = 4
+Distance = 3.0
+BulletSpread = 35.0
+BulletSpreadIncrease = 5.0
+StartingCost = 75
+CostMultiplier = 1.5
+MaxUpgrades = 10
+BulletSize = 0.7
+BulletSpeed = 10.0
+BulletSprite = ExtResource("2_fwjai")
+Projectile = ExtResource("3_yw66a")
+
+[node name="__MARKER__" type="Marker2D" parent="."]
+position = Vector2(0, -23.49)
+gizmo_extents = 0.0
+
+[node name="__Disabled__" type="ColorRect" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+color = Color(1, 0, 0, 1)
+
+[node name="__SCALABLE__" type="Node2D" parent="."]
+modulate = Color(0.0862745, 0.439216, 0.458824, 0.490196)
+scale = Vector2(1e-05, 1)
+
+[node name="__RANGE__" type="Sprite2D" parent="__SCALABLE__"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_wrhv7")
+
+[node name="__AREA__" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="__COL__" type="CollisionShape2D" parent="__AREA__" groups=["TURRET"]]
+scale = Vector2(0.333333, 0.333333)
+shape = SubResource("CircleShape2D_r2m5c")
+
+[node name="__NULL__" type="Node2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="__BASE__" type="Sprite2D" parent="__NULL__"]
+texture = ExtResource("5_x4v66")
+
+[node name="__ROT__" type="Sprite2D" parent="__NULL__"]
+texture = ExtResource("6_mpwcg")
+
+[node name="__ANIM__" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o5crn")
+}
+
+[connection signal="mouse_entered" from="__AREA__" to="." method="_on___area___mouse_entered"]
+[connection signal="mouse_exited" from="__AREA__" to="." method="_on___area___mouse_exited"]
+[connection signal="animation_finished" from="__ANIM__" to="." method="_on___anim___animation_finished"]

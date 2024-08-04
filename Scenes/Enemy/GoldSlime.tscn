@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://63hufh8mo68l"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/Enemy.gd" id="1_scaap"]
+[ext_resource type="PackedScene" uid="uid://g17meung23iq" path="res://Scenes/Enemy/__death_particals__.tscn" id="2_lglbr"]
+[ext_resource type="PackedScene" uid="uid://dsvu618jqaxw" path="res://Scenes/Enemy/__hit_particals__.tscn" id="3_mn5ey"]
+[ext_resource type="Texture2D" uid="uid://bi8g50uxp4ytc" path="res://Sprites/Enemys/Gold_Slime_still.png" id="4_usiat"]
+[ext_resource type="Texture2D" uid="uid://b3dpm4r4ulbcd" path="res://Sprites/Enemys/Slime_Still_Mat.png" id="5_0j5di"]
+[ext_resource type="StyleBox" uid="uid://reyveolov23g" path="res://StyleBoxs/BARS/HealthBar_Background.tres" id="6_b1dtv"]
+[ext_resource type="StyleBox" uid="uid://g8odlyiyqthf" path="res://StyleBoxs/BARS/HealthBar_Fill.tres" id="7_tfifh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iy4g1"]
+radius = 22.0
+
+[sub_resource type="Animation" id="Animation_w1ttt"]
+resource_name = "on_hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("__SPRITE__MAT__:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1e-05, 1.75, 1.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("__SPRITE__:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1e-05, 1.75, 1.5),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.1, 2.1), Vector2(2, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("__SPRITE__MAT__:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1e-05, 1.75, 1.5),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.1, 2.1), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kmyej"]
+_data = {
+"on_hit": SubResource("Animation_w1ttt")
+}
+
+[node name="__PATHFOLLOW__" type="PathFollow2D" groups=["ENEMY"]]
+rotates = false
+loop = false
+script = ExtResource("1_scaap")
+Speed = 55.0
+MaxHealth = 5
+MaxMoneyDropped = 75
+Deathparticles = ExtResource("2_lglbr")
+Hitparticles = ExtResource("3_mn5ey")
+
+[node name="__SPRITE__" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("4_usiat")
+
+[node name="__SPRITE__MAT__" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("5_0j5di")
+
+[node name="__AREA__" type="Area2D" parent="."]
+
+[node name="__COL__" type="CollisionShape2D" parent="__AREA__" groups=["ENEMY_COL"]]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_iy4g1")
+
+[node name="__HEALTHBAR__" type="ProgressBar" parent="."]
+offset_left = -27.0
+offset_top = 20.0
+offset_right = 107.0
+offset_bottom = 48.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/background = ExtResource("6_b1dtv")
+theme_override_styles/fill = ExtResource("7_tfifh")
+value = 26.53
+show_percentage = false
+
+[node name="__ANIM__" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kmyej")
+}
+
+[connection signal="area_shape_entered" from="__AREA__" to="." method="_on___area___area_shape_entered"]

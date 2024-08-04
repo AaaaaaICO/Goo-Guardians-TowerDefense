@@ -1,0 +1,163 @@
+[gd_scene load_steps=13 format=3 uid="uid://bhyi2as57iqtn"]
+
+[ext_resource type="Script" path="res://Scripts/Turrets/Turret.gd" id="1_2q58v"]
+[ext_resource type="Texture2D" uid="uid://du1f1xpvaom5a" path="res://Sprites/Turrets/Sniper/Sniper_BUL.png" id="2_t6u02"]
+[ext_resource type="PackedScene" uid="uid://fo604lcmmdg6" path="res://Scenes/Turrets/Sniper_Bullet.tscn" id="3_sxibq"]
+[ext_resource type="Texture2D" uid="uid://boy60l3ahrrp" path="res://Sprites/Assets/Radius.png" id="4_avrhh"]
+[ext_resource type="Texture2D" uid="uid://qb6jvh4rpah8" path="res://Sprites/Turrets/Sniper/Sniper.png" id="5_p4j8v"]
+[ext_resource type="Texture2D" uid="uid://5b65dnpfwlch" path="res://Sprites/Turrets/Sniper/Sniper_ROT.png" id="6_mue72"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r2m5c"]
+radius = 25.0
+
+[sub_resource type="Animation" id="Animation_gxrmg"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("__SCALABLE__:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pn17a"]
+resource_name = "on_hover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("__SCALABLE__:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(0.217638, 0.329877, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.05, 1.05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_813a1"]
+resource_name = "on_hover_release"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("__SCALABLE__:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(0.217638, 0.450626, 0.517632),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_itjko"]
+resource_name = "on_upgrade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("__NULL__/__BASE__:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.241484, 1, 2.21914, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("__NULL__/__ROT__:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.241484, 1, 2.21914, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5crn"]
+_data = {
+"RESET": SubResource("Animation_gxrmg"),
+"on_hover": SubResource("Animation_pn17a"),
+"on_hover_release": SubResource("Animation_813a1"),
+"on_upgrade": SubResource("Animation_itjko")
+}
+
+[node name="Turret" type="Node2D" groups=["TURRET"]]
+script = ExtResource("1_2q58v")
+DefRangeScale = 0.18
+Index = 2
+TurretName = "Sniper"
+FireRate = 1.2
+FireRateIncrease = 0.1
+NumOfProj = 1
+Damage = 55
+DamageIncrease = 10
+Distance = 10.0
+DistanceIncrease = 1.0
+UsingRadius = true
+StartingCost = 105
+CostMultiplier = 1.8
+MaxUpgrades = 10
+BulletSize = 2.0
+BulletSpeed = 44.0
+BulletSprite = ExtResource("2_t6u02")
+Projectile = ExtResource("3_sxibq")
+
+[node name="__MARKER__" type="Marker2D" parent="."]
+position = Vector2(0, -23.49)
+gizmo_extents = 0.0
+
+[node name="__Disabled__" type="ColorRect" parent="."]
+visible = false
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+color = Color(1, 0, 0, 1)
+
+[node name="__SCALABLE__" type="Node2D" parent="."]
+modulate = Color(0.0862745, 0.439216, 0.458824, 0.490196)
+scale = Vector2(1e-05, 1)
+
+[node name="__RANGE__" type="Sprite2D" parent="__SCALABLE__"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_avrhh")
+
+[node name="__AREA__" type="Area2D" parent="."]
+scale = Vector2(3, 3)
+
+[node name="__COL__" type="CollisionShape2D" parent="__AREA__" groups=["TURRET"]]
+scale = Vector2(0.333333, 0.333333)
+shape = SubResource("CircleShape2D_r2m5c")
+
+[node name="__NULL__" type="Node2D" parent="."]
+rotation = -0.0091182
+scale = Vector2(3, 3)
+
+[node name="__BASE__" type="Sprite2D" parent="__NULL__"]
+texture = ExtResource("5_p4j8v")
+
+[node name="__ROT__" type="Sprite2D" parent="__NULL__"]
+texture = ExtResource("6_mue72")
+offset = Vector2(0, -2)
+
+[node name="__ANIM__" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o5crn")
+}
+
+[connection signal="mouse_entered" from="__AREA__" to="." method="_on___area___mouse_entered"]
+[connection signal="mouse_exited" from="__AREA__" to="." method="_on___area___mouse_exited"]
+[connection signal="animation_finished" from="__ANIM__" to="." method="_on___anim___animation_finished"]

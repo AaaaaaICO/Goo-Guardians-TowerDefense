@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp14p0g3leav8"]
+
+[ext_resource type="Script" path="res://Scripts/Turrets/Bullet.gd" id="1_blbw0"]
+[ext_resource type="Texture2D" uid="uid://cgd3c70b50ob4" path="res://Sprites/Turrets/Turret/Turret_BUL.png" id="2_g8el6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2rvi5"]
+
+[node name="__BULLET__" type="CharacterBody2D" groups=["FRIENDLY_PROJECTILE"]]
+script = ExtResource("1_blbw0")
+
+[node name="__NULL__" type="Node2D" parent="."]
+
+[node name="__SPRITE__" type="Sprite2D" parent="__NULL__"]
+rotation = 1.5708
+texture = ExtResource("2_g8el6")
+
+[node name="__AREA__" type="Area2D" parent="__NULL__" groups=["FRIENDLY_PROJECTILE"]]
+
+[node name="__COL__" type="CollisionShape2D" parent="__NULL__/__AREA__" groups=["FRIENDLY_PROJECTILE"]]
+shape = SubResource("CircleShape2D_2rvi5")
+
+[node name="__OnScreenNotifier__" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="__OnScreenNotifier__" to="." method="__OnScreenNotifier__screen_exited"]

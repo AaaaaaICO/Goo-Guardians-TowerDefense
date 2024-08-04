@@ -1,0 +1,83 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhojdkpbqc1ac"]
+
+[ext_resource type="Script" path="res://Scripts/Maps/EnemySpawner.gd" id="1_501k1"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_501k1")
+Rounds = [[{
+"Delay": 1.25,
+"EndDelay": 2.0,
+"EnemyPath": "res://Scenes/Enemy/GreenSlime.tscn",
+"NumberToSpawn": 5
+}, {
+"Delay": 1.0,
+"EndDelay": 1.0,
+"EnemyPath": "res://Scenes/Enemy/GreenSlime.tscn",
+"NumberToSpawn": 10
+}, {
+"Delay": 0.5,
+"EndDelay": 7.0,
+"EnemyPath": "res://Scenes/Enemy/GreenSlime.tscn",
+"NumberToSpawn": 5
+}], [{
+"Delay": 0.3,
+"EndDelay": 1.0,
+"EnemyPath": "res://Scenes/Enemy/GreenSlime.tscn",
+"NumberToSpawn": 15
+}, {
+"Delay": 3.0,
+"EndDelay": 5.0,
+"EnemyPath": "res://Scenes/Enemy/BlueSlime.tscn",
+"NumberToSpawn": 5
+}]]
+WaveStyle = true
+WaveSettings = [{
+"Cluster": 3,
+"Density": 6.0,
+"EnemyPath": "res://Scenes/Enemy/GreenSlime.tscn",
+"FinalRound": 10,
+"SpawnRate": 20,
+"StartOnRound": 1
+}, {
+"Cluster": 4,
+"Density": 8.0,
+"EnemyPath": "res://Scenes/Enemy/RedSlime.tscn",
+"FinalRound": 20,
+"SpawnRate": 15,
+"StartOnRound": 4
+}, {
+"Cluster": 2,
+"Density": 10.0,
+"EnemyPath": "res://Scenes/Enemy/BlueSlime.tscn",
+"FinalRound": 45,
+"SpawnRate": 10,
+"StartOnRound": 7
+}, {
+"Cluster": 2,
+"Density": 20.0,
+"EnemyPath": "res://Scenes/Enemy/EyeBat.tscn",
+"FinalRound": 45,
+"SpawnRate": 10,
+"StartOnRound": 8
+}, {
+"Cluster": 1,
+"Density": 1.0,
+"EnemyPath": "res://Scenes/Enemy/GoldSlime.tscn",
+"FinalRound": 100,
+"SpawnRate": 1,
+"StartOnRound": 15
+}, {
+"Cluster": 5,
+"Density": 7.0,
+"EnemyPath": "res://Scenes/Enemy/PurpleSlime.tscn",
+"FinalRound": 40,
+"SpawnRate": 10,
+"StartOnRound": 15
+}, {
+"Cluster": 3,
+"Density": 5.0,
+"EnemyPath": "res://Scenes/Enemy/PurpleSlime.tscn",
+"FinalRound": 40,
+"SpawnRate": 20,
+"StartOnRound": 15
+}]
