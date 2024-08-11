@@ -6,7 +6,7 @@ This project has been rushed withing a few days as from monday im starting a lar
 
 4 Turrets
 
-6 Enemys
+6 Enemies
 
 >**ENDLESS** Waves
 ```
@@ -17,7 +17,7 @@ This project has been rushed withing a few days as from monday im starting a lar
 >
 >More Turrets
 >
->More Enemys
+>More Enemies
 >
 >More Bullet Types (special effects)
 >
@@ -30,7 +30,7 @@ This project has been rushed withing a few days as from monday im starting a lar
 > 
 > Audio Sliders Dont do much and effect audio sources differently
 > 
-> Enemys clipping into a turret if enemy path is too close to placeable ground (causes turret to flash red)
+> Enemies clipping into a turret if enemy path is too close to placeable ground (causes turret to flash red)
 
 
 
