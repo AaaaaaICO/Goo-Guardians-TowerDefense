@@ -110,6 +110,7 @@ BulletSpreadIncrease = 5.0
 StartingCost = 75
 CostMultiplier = 1.5
 MaxUpgrades = 10
+UpgradeMulti = 1.05
 BulletSize = 0.7
 BulletSpeed = 10.0
 BulletSprite = ExtResource("2_fwjai")

@@ -110,6 +110,7 @@ UsingRadius = true
 StartingCost = 105
 CostMultiplier = 1.8
 MaxUpgrades = 10
+UpgradeMulti = 1.05
 BulletSize = 2.0
 BulletSpeed = 44.0
 BulletSprite = ExtResource("2_t6u02")
