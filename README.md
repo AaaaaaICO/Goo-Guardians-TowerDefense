@@ -31,7 +31,8 @@ This project has been rushed withing a few days as from monday im starting a lar
 > Audio Sliders Dont do much and effect audio sources differently
 > 
 > Enemies clipping into a turret if enemy path is too close to placeable ground (causes turret to flash red)
-
+>
+> Crashing on level 2 ( Unknown if this is an issue or a random crash please place a bug report if this happens to you )
 
 
 ### Thanks for downloading
